@@ -1,0 +1,22 @@
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Django local files
+db.sqlite3
+media/
+
+# React
+node_modules/
+dist/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
