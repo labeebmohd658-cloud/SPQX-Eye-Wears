@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'myapp',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -72,12 +76,18 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "Speqx_eyewear",
+        "USER": "postgres",
+        "PASSWORD": "labeeb",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
+
 
 
 # Password validation
@@ -124,4 +134,24 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+
+AUTH_USER_MODEL = "myapp.User"
+
+# Email configuration for development
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    },
+}
+
+DEFAULT_FROM_EMAIL = "speq658@gmail.com"
+
+EMAIL_OTP_EXPIRY_MINUTES = 5
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES":[
+        "rest_framework_simplejwt.authentication.JWTAuthentication"
+    ],
 }
