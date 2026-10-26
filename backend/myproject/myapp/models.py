@@ -44,6 +44,10 @@ class Address(models.Model):
         return f"{self.full_name} - {self.city}"
 
 class EmailOTP(models.Model):
+    PURPOSE_CHOICE = [
+        ("email_verification","Email_Verification"),
+        ("password_reset","Password Reset"),
+    ]
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -55,6 +59,12 @@ class EmailOTP(models.Model):
     expires_at = models.DateTimeField()
     is_used = models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
+
+    purpose = models.CharField(
+        max_length=30,
+        choices=PURPOSE_CHOICE,
+        default="email_verification"
+    )
 
     def __str__(self):
         return f"OTP for {self.user.email}"
