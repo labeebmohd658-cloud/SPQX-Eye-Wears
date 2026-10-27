@@ -77,7 +77,7 @@ class ProfileView(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
-class LogutView(generics.GenericAPIView):
+class LogoutView(generics.GenericAPIView):
     serializer_class=LogoutSerializer
     permission_classes=[IsAuthenticated]
 
@@ -105,7 +105,7 @@ class AdminLoginView(generics.GenericAPIView):
 
 
 
-class ForgetPasswordView(generics.GenericAPIView):
+class ForgotPasswordView(generics.GenericAPIView):
     serializer_class=ForgotPasswordSerializer
     permission_classes = [AllowAny]
 
